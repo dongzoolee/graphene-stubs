@@ -22,15 +22,15 @@ def find_stub_files():
 
 
 setup(
-    name='graphene-stubs',
-    version='0.15',
+    name='types-graphene',
+    version='0.17',
     description=description,
     long_description=install_instructions,
     long_description_content_type='text/markdown',
-    author='Cohen Karnell',
-    author_email='cohen@trialspark.com',
+    author='dongzoolee',
+    author_email='me@leed.at',
     license='MIT License',
-    url="https://github.com/trialspark/graphene-stubs",
+    url="https://github.com/dongzoolee/types-graphene",
     py_modules=['graphene_plugin', 'graphene_typing'],
     install_requires=['mypy>=0.750', 'typing-extensions>=3.6.5'],
     packages=['graphene-stubs'],

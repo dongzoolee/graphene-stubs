@@ -1,10 +1,10 @@
 Metadata-Version: 2.1
-Name: graphene-stubs
-Version: 0.15
+Name: types-graphene
+Version: 0.17
 Summary: Graphene stubs and mypy plugin
-Home-page: https://github.com/trialspark/graphene-stubs
-Author: Cohen Karnell
-Author-email: cohen@trialspark.com
+Home-page: https://github.com/dongzoolee/types-graphene
+Author: dongzoolee
+Author-email: me@leed.at
 License: MIT License
 Description: 
         # View installation instructions on github
