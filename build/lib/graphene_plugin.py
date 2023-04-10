@@ -11,7 +11,6 @@ from mypy.nodes import AssignmentStmt, Decorator, CallExpr, Argument, TypeInfo, 
     RefExpr, NameExpr
 from mypy.options import Options
 from mypy.plugin import Plugin, AttributeContext, ClassDefContext, SemanticAnalyzerPluginInterface
-from mypy.state import strict_optional_set
 from mypy.subtypes import is_subtype, is_equivalent
 from mypy.types import AnyType, CallableType, Instance, TypeOfAny, Type, NoneType, UnionType, UnboundType
 

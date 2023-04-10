@@ -23,7 +23,7 @@ def find_stub_files():
 
 setup(
     name='types-graphene',
-    version='0.18',
+    version='0.19',
     description=description,
     long_description=install_instructions,
     long_description_content_type='text/markdown',
