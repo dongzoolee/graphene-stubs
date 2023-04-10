@@ -11,6 +11,7 @@ from mypy.nodes import AssignmentStmt, Decorator, CallExpr, Argument, TypeInfo, 
     RefExpr, NameExpr
 from mypy.options import Options
 from mypy.plugin import Plugin, AttributeContext, ClassDefContext, SemanticAnalyzerPluginInterface
+from mypy.state import strict_optional_set
 from mypy.subtypes import is_subtype, is_equivalent
 from mypy.types import AnyType, CallableType, Instance, TypeOfAny, Type, NoneType, UnionType, UnboundType
 
@@ -344,13 +345,20 @@ def _get_graphene_subclass_runtime_type(type_info: TypeInfo) -> Type:
     to `ObjectType`/`Interface`) (e.g. `ObjectType[Foo] -> Foo`)
     """
 
-    graphene_base = next(
-        base for base in type_info.bases if base.type.fullname in (GRAPHENE_OBJECTTYPE_NAME, GRAPHENE_INTERFACE_NAME)
-    )
-    # Note: even if no type argument was passed to `ObjectType`/`Interface` when it was sub-classed, there will still be
-    # an item in the `args` list below. It will just be `Any`.
-    return graphene_base.args[0]
+    def get_match(type_info: TypeInfo) -> Optional[Type]:
+        for base in type_info.bases:
+            if base.type.fullname in (
+                GRAPHENE_OBJECTTYPE_NAME,
+                GRAPHENE_INTERFACE_NAME,
+            ):
+                return base.args[0]
 
+        for base in type_info.bases:
+            return get_match(base.type)
+
+        raise Exception("No graphene type found for {}".format(type_info.fullname))
+
+    return get_match(type_info)
 
 @dataclass
 class FieldArgumentInfo:
