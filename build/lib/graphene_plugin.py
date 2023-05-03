@@ -359,6 +359,7 @@ def _get_graphene_subclass_runtime_type(type_info: TypeInfo) -> Type:
 
     return get_match(type_info)
 
+
 @dataclass
 class FieldArgumentInfo:
     """

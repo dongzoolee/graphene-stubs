@@ -18,12 +18,13 @@ def find_stub_files():
                     sub_root = root.split(os.path.sep, 1)[-1]
                     file = os.path.join(sub_root, file)
                 result.append(file)
+    print(result)
     return result
 
 
 setup(
     name='types-graphene',
-    version='0.19',
+    version='0.2',
     description=description,
     long_description=install_instructions,
     long_description_content_type='text/markdown',
