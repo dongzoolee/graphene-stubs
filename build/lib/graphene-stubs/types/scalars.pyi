@@ -52,6 +52,9 @@ class Float(Scalar):
 
 
 class String(Scalar):
+    @overload
+    def __new__(cls, *args) -> str: ...
+
     @staticmethod
     def coerce_string(value: Any) -> str:
         ...
